@@ -1,0 +1,17 @@
+scalar GraphQLDate
+
+type Task {
+	id: Int!
+	title: String!
+	status: String!
+	created: GraphQLDate!
+}
+
+type Query {
+	about: String!
+	taskList: [Task!]!
+}
+
+type Mutation {
+	setAboutMessage(message: String!): String
+}

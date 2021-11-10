@@ -1,48 +1,9 @@
 import { uniqueId } from '../actions/index.js'
 
-const initialState = {
-	tasks: [
-		{	
-			id: uniqueId(),
-			status: "active",
-			title: "Fix bug in line 8",
-			created: "2020-09-15",
-		},
-		{	
-			id: uniqueId(),
-			status: "completed",
-			title: "Develop ToDo application",
-			created: "2021-06-17",
-		},
-		{	
-			id: uniqueId(),
-			status: "active",
-			title: "Hide dates for tasks",
-			created: "2021-10-17",
-		},
-		{	
-			id: uniqueId(),
-			status: "active",
-			title: "Add filter funcionality",
-			created: "2021-10-17",
-		},
-		{	
-			id: uniqueId(),
-			status: "active",
-			title: "Test functionality",
-			created: "2021-10-17",
-		},
-		{	
-			id: uniqueId(),
-			status: "completed",
-			title: "Check deployment",
-			created: "2021-10-17",
-		},
-]};
-
-
-export default function TasksReducer(state = initialState, action) {
+export default function TasksReducer(state = { tasks: [] }, action) {
 	switch (action.type) {
+		case 'FETCH_TASKS_SUCCEEDED': 
+			return { tasks: action.payload.tasks };
 		case 'CREATE_TASK': 
 			return { tasks: state.tasks.concat(action.payload) };
 		case 'EDIT_TASK': 

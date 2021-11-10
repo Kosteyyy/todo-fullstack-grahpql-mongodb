@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { devToolsEnhancer } from 'redux-devtools-extension';
+import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension';
 import TasksReducer from './reducers/index.js';
 import './styles.css';
 
 import { AppContainer } from './styles.js';
 import TodoApp from './TodoApp.jsx';
 
-const store = createStore(TasksReducer, devToolsEnhancer());
+const store = createStore(TasksReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 function App() {
 	return (
