@@ -7,31 +7,39 @@ const ENTER_KEY = 13;
 
 
 
-export const Task = ({ task }) => {
+export const Task = ({ task, onEditTask, onDeleteTask, showDate }) => {
 	const [editing, setEditing] = useState(false);
 	const [editText, setEditText] = useState(task.title);
-	const [buttonVisible, setButtonVisible] = useState(false);
 
 	function handleKeyDown(event) {
 		if (event.which === ESCAPE_KEY) {
 			setEditText(task.title);
 			setEditing(false);
 		} else if (event.which === ENTER_KEY) {
-			console.log("submited", editText);
-			setEditText(task.title);
+			onEditTask(task.id, task.status, editText);
 			setEditing(false);
 		}		
+	}
+
+	function handleStatusChange() {
+		onEditTask(task.id, task.status==="active" ? "completed" : "active", task.title);
+	}
+
+	function handleDelete() {
+		onDeleteTask(task.id)
 	}
 
 	if (editing) {
 		return (
 			<TaskEditInput 
+				autoFocus
+				name="editTask"
 				value={editText}
 				placeholder={"Add task"}
 				onChange={e => setEditText(e.target.value)}
 				onBlur={() => {
-					console.log("submited", editText)
-					setEditing(false)
+					setEditing(false);
+					onEditTask(task.id, task.status, editText);
 				}}
 				onKeyDown={(e) => handleKeyDown(e)}
 			/>
@@ -41,24 +49,20 @@ export const Task = ({ task }) => {
 		<TaskContainer 
 			className={task.status==="completed" ? "completed" : ""} 
 			onDoubleClick={() => setEditing(true)}
-			onMouseOver={() => setButtonVisible(true)}
-			onMouseOut={() => setButtonVisible(false)}
 		>
 			<div>
 				<input
 					className="toggle"
 					type="checkbox"
 					checked={task.status==="completed"}
-					onChange={() => console.log("Task status changed")}
+					onChange={() => handleStatusChange()}
 				/>
 				{task.title}
 			</div>
 			<div>
-				<TaskDate>{new Date(task.created).toDateString()}</TaskDate>
-				<DestroyTaskButton className={buttonVisible ? "visible" : ""}></DestroyTaskButton>
+				{showDate ? <TaskDate>{new Date(task.created).toLocaleDateString()}</TaskDate> : null}
+				<DestroyTaskButton  onClick={() => handleDelete()}></DestroyTaskButton>
 			</div>
-			
-
 		</TaskContainer>
 	);
 		

@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
-import reducer from './reducer';
+import TasksReducer from './reducers/index.js';
 import './styles.css';
 
 import { AppContainer } from './styles.js';
 import TodoApp from './TodoApp.jsx';
 
-const store = createStore(reducer, devToolsEnhancer());
+const store = createStore(TasksReducer, devToolsEnhancer());
 
 function App() {
 	return (

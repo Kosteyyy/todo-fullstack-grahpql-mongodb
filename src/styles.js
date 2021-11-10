@@ -11,10 +11,17 @@ export const AppContainer = styled.div`
 	width: 100%;
 `;
 
+export const Help = styled.div`
+	text-align: center;
+	color: #777;
+	font-size: 0.8rem;
+	padding-top: 10px;
+`;
+
 export const TasksContainer = styled.div`
 	background-color: #ebecf0;
 	max-width: 800px;
-	min-width: 200px;
+	min-width: 300px;
 	width: 100%;
 	min-height: 40px;
 	margin-right: 20px;
@@ -32,6 +39,7 @@ export const TasksTitle = styled.div`
 
 export const TaskContainer = styled.div`
 	background-color: #fff;
+	color: #333;
 	cursor: pointer;
 	margin-bottom: 0.5rem;
 	padding: 0.5rem;
@@ -43,7 +51,7 @@ export const TaskContainer = styled.div`
 	text-decoration: ${p => p.textDecoration};
 	&.completed {
 		text-decoration: line-through;
-		color: #888;
+		color: #aaa;
 	}
 `;
 
@@ -143,13 +151,45 @@ export const DestroyTaskButton = styled.button`
     left: -3px;
     transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
   }
-	&.visible {
-		opacity: 1.0;
-		text-decoration: none;
-	}
+  &:hover {
+  	opacity: 1.0;
+  }
 `
 export const TaskDate = styled.div`
 	padding-right: 10px;
 	padding-left: 10px;
+	display: inline;
+`
+
+export const FooterCounter = styled.span`
+	color: #777;
+	margin-right: 20px;
+`
+
+export const FilterButton = styled.button`
+	background-color: transparent;
+	border-radius: 3px;
+	border: none;
+	box-shadow: none;
+	color: #777;
+	padding: 6px 10px;
+	text-align: center;
+	cursor: pointer;
+	display: inline;
+	&.active {
+		border: 1px solid peru;
+	}
+`
+
+export const ShowDateButton = styled.button`
+	background-color: #aaa;
+	border-radius: 3px;
+	border: none;
+	box-shadow: none;
+	color: #fff;
+	padding: 6px 10px;
+	margin-left: 30px;
+	text-align: center;
+	cursor: pointer;
 	display: inline;
 `

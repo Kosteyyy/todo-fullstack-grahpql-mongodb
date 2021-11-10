@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AddTaskButton } from './styles.js';
 import { NewTaskForm } from './NewTaskForm.jsx';
 
-const AddTask = ({ onAdd }) => {
+const AddTask = ({ onAdd, validateTask }) => {
 	const [showForm, setShowForm] = useState(false);
 
 	if (showForm) {
@@ -10,9 +10,11 @@ const AddTask = ({ onAdd }) => {
 			<NewTaskForm
 				onAdd={text => {
 					onAdd(text);
+					console.log("submit: ", text);
 					setShowForm(false);
 				}}
 				onCancel={() => setShowForm(false)}
+				validateTask={validateTask}
 			/>
 		)
 	}
