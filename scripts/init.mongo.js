@@ -3,7 +3,7 @@
 // localhost: 
 // 	mongo taskapp scripts/init.mongo.js
 // Atlas: 
-// mongo mongodb+srv://Kosteyyy:Kosteyyy1@cluster0.nru2m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+// mongo mongodb+srv://Kosteyyy:Kosteyyy1@cluster0.nru2m.mongodb.net/taskApp scripts/init.mongo.js
 
 db.tasks.remove({});
 db.deleted_tasks.remove({});
