@@ -7,8 +7,8 @@ export const AppContainer = styled.div`
 	flex-direction: row;
 	justify-content: center;
 	height: 100%;
-	padding: 20px;
 	width: 100%;
+	padding: 20px;
 `;
 
 export const Help = styled.div`
@@ -27,7 +27,6 @@ export const TasksContainer = styled.div`
 	margin-right: 20px;
 	border-radius: 3px;
 	padding: 8px 8px;
-	flex-grow: 0;
 `;
 export const TasksTitle = styled.div`
 	width: 100%;
@@ -149,7 +148,6 @@ export const DestroyTaskButton = styled.button`
     font-size: 1.5rem;
     top: -17px;
     left: -3px;
-    transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
   }
   &:hover {
   	opacity: 1.0;

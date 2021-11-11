@@ -1,7 +1,7 @@
 import React from 'react';
 import { Task } from './Task.jsx';
 
-export default function TaskList ({ tasks, onEditTask, onDeleteTask, showDate }) {
+export default function TaskList ({ tasks, onEditTask, onDeleteTask, showDate, validateTask }) {
 	return (
 		<>
 			{tasks.map((task, item) => <Task 
@@ -10,6 +10,7 @@ export default function TaskList ({ tasks, onEditTask, onDeleteTask, showDate })
 				onEditTask={onEditTask}
 				onDeleteTask={onDeleteTask}
 				showDate={showDate}
+				validateTask={validateTask}
 			/>)}
 		</> 
 	)

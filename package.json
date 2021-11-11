@@ -7,6 +7,7 @@
     "start": "nodemon -w server -e js,graphql server/server.js",
     "compile": "webpack --mode production",
     "watch": "webpack --watch",
+    "heroku-postbuild": "npm run compile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kosteyyy",

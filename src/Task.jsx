@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-
 import { TaskContainer, TaskEditInput, TaskDate, DestroyTaskButton } from './styles.js';
 
 const ESCAPE_KEY = 27;
 const ENTER_KEY = 13;
 
-
-
-export const Task = ({ task, onEditTask, onDeleteTask, showDate }) => {
+export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask }) => {
 	const [editing, setEditing] = useState(false);
 	const [editText, setEditText] = useState(task.title);
 
@@ -16,6 +13,11 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate }) => {
 			setEditText(task.title);
 			setEditing(false);
 		} else if (event.which === ENTER_KEY) {
+			if (!validateTask(editText, task.id)) {
+				alert("Task already exists");
+				setEditText(task.title);
+				return;
+			}
 			onEditTask(task.id, task.status, editText);
 			setEditing(false);
 		}		
@@ -38,6 +40,12 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate }) => {
 				placeholder={"Add task"}
 				onChange={e => setEditText(e.target.value)}
 				onBlur={() => {
+					if (!validateTask(editText, task.id)) {
+						alert("Task alreadyy exists");
+						setEditText(task.title);
+						setEditing(false);
+						return;
+					}
 					setEditing(false);
 					onEditTask(task.id, task.status, editText);
 				}}
@@ -45,6 +53,7 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate }) => {
 			/>
 		)
 	} 
+
 	return (
 		<TaskContainer 
 			className={task.status==="completed" ? "completed" : ""} 
@@ -65,5 +74,4 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate }) => {
 			</div>
 		</TaskContainer>
 	);
-		
 }

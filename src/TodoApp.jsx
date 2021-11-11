@@ -55,10 +55,16 @@ export default function TodoApp () {
 		}
 
 		//Used in AddTask -> NewTaskForm to prevent adding similar tasks
-		const validateTaskTitle = (title) => {
+		const validateTaskTitle = (title, id) => {
 			let valid = true;
 			for (let item of tasks) {
-				if (item.title == title) {return false;}
+				if (item.title.trim() === title.trim()) {
+					if (!id) { //if new task has same title
+						return false;
+					} else if (id != item.id) { //if edited task has other id but same title
+						return false;
+					}
+				}
 			}
 			return true;
 		}
@@ -71,9 +77,23 @@ export default function TodoApp () {
 		return (
 			<TasksContainer>
 				<TasksTitle>ToDo</TasksTitle>
-				<AddTask onAdd={onCreateTask} validateTask={validateTaskTitle}/>
-				<TaskList tasks={shownTasks} onEditTask={onEditTask} onDeleteTask={onDeleteTask} showDate={showDate}/>
-				<TaskFooter taskCount={activeTasksCount} setFilter={setFilter} showDate={showDate} onChangeShowDate={onChangeShowDate}/>
+				<AddTask 
+					onAdd={onCreateTask}
+					validateTask={validateTaskTitle}
+				/>
+				<TaskList 
+					tasks={shownTasks} 
+					onEditTask={onEditTask}
+					onDeleteTask={onDeleteTask}
+					showDate={showDate}
+					validateTask={validateTaskTitle}
+				/>
+				<TaskFooter
+					taskCount={activeTasksCount}
+					setFilter={setFilter}
+					showDate={showDate}
+					onChangeShowDate={onChangeShowDate}
+				/>
 				<Help>Doubleclick to edit Task</Help>
 			</TasksContainer>	
 		)

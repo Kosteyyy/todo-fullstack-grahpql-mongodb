@@ -8,6 +8,7 @@ const DB_URL = require("./db_access.js");
 
 //const url = 'mongodb://localhost/taskapp';
 const url = DB_URL;
+const PORT = process.env.PORT || 3000;
 
 let db;
 
@@ -113,8 +114,8 @@ server.applyMiddleware({ app, path: '/graphql' });
 (async function () {
 	try {
 		await connectToDb();
-		app.listen(3000, function () {
-			console.log('App started on port 3000');
+		app.listen(PORT, function () {
+			console.log(`App started on port ${PORT}`);
 		});
 	} catch (err) {
 		console.log('Error: ', err);
