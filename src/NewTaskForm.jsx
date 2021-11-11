@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { NewTaskFormContainer, NewTaskButton, NewTaskInput, CancelNewTaskButton } from './styles.js';
 
-const ESCAPE_KEY = 27;
+const ESCAPE_KEY = 27; //Keys to esc and confirm task creation 
 const ENTER_KEY = 13;
 
 export const NewTaskForm = ({ onAdd, onCancel, validateTask }) => {
-	const [text, setText] = useState("");
+	const [text, setText] = useState(""); //controlled input from form
 	
 	const onAddTask = () => {
 		if (!validateTask(text)) {
@@ -16,9 +16,9 @@ export const NewTaskForm = ({ onAdd, onCancel, validateTask }) => {
 	}
 
 	function handleKeyDown(event) {
-		if (event.which === ESCAPE_KEY) {
+		if (event.which === ESCAPE_KEY) { //ESC key calcel adding
 			onCancel();
-		} else if (event.which === ENTER_KEY) {
+		} else if (event.which === ENTER_KEY) { //Enter key confirms
 			if (validateTask(text)) {
 				onAddTask();
 			} else {

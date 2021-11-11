@@ -7,15 +7,14 @@ const { MongoClient } = require('mongodb');
 const DB_URL = require("./db_access.js");
 
 //const url = 'mongodb://localhost/taskapp';
-const url = DB_URL;
-const PORT = process.env.PORT || 3000;
+const url = DB_URL; //url for MongoAtlas
+const PORT = process.env.PORT || 3000;  //port for deploy or localhost
 
 let db;
 
-let aboutMessage = "ToDo app API v1.0";
+let aboutMessage = "ToDo app API v1.0"; 
 
-
-
+//Type for date in GraphQL
 const GraphQLDate = new GraphQLScalarType({
 	name: 'GraphQLDate',
 	description: 'A Date() type in GraphQL as a scalar',
@@ -43,6 +42,8 @@ const resolvers = {
 	},
 	GraphQLDate,
 };
+
+//functionality for resolvers
 
 function setAboutMessage(_, { message }) {
 	return aboutMessage = message;

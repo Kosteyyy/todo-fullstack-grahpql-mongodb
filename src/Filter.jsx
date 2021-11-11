@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FilterButton } from "./styles.js";
 
-export default function Filter({ setFilter }) {
-	const filters = ['All', 'Active', 'Completed'];
-	const [activeFilter, setActiveFilter] = useState('All');
+export default class Filter extends React.Component {
+	//Implement filter buttons and pass to parents filter Name via props.setFilter
+	constructor(props) {
+		super(props)
+		this.state = {
+			activeFilter: 'All'
+		};
+	}
 
-	return (
-		<>
-			{filters.map((filter, i) => <FilterButton onClick={() => {setActiveFilter(filter); setFilter(filter)}} key={i} className={activeFilter===filter ? "active" : ""}>{filter}</FilterButton>)}
-		</>
-	)
+	render () {
+		const filters = ['All', 'Active', 'Completed'];
+		
+		return (
+			<>
+				{filters.map((filter, i) => <FilterButton 
+						onClick={() => {
+							this.setState({ activeFilter: filter });
+							this.props.setFilter(filter)
+						}} 
+						key={i} 
+						className={this.state.activeFilter===filter ? "active" : ""}
+					>
+						{filter}
+					</FilterButton>
+				)}
+			</>
+		)
+	}
 }
+
