@@ -6,6 +6,7 @@ const ENTER_KEY = 13;
 
 export const NewTaskForm = ({ onAdd, onCancel, validateTask }) => {
 	const [text, setText] = useState("");
+	
 	const onAddTask = () => {
 		if (!validateTask(text)) {
 			alert("Task already exists");
@@ -36,6 +37,7 @@ export const NewTaskForm = ({ onAdd, onCancel, validateTask }) => {
   	disabled = false;
   	opacity = 1.0;
   }
+  
 	return (
 		<NewTaskFormContainer>
 			<NewTaskInput

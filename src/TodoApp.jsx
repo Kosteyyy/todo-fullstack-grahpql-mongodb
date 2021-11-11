@@ -41,17 +41,17 @@ export default function TodoApp () {
 
 		//Used in AddTask -> NewTaskForm
 		const onCreateTask = (title) => {
-			dispatch(createTask({ title }));
+			(createTask(dispatch, title));
 		}
 
 		//Used in TaskList -> Task
 		const onEditTask = (id, status, title) => {
-			dispatch(editTask(id, { status, title }));
+			editTask(dispatch, id, { status, title });
 		}
 
 		//Used in TaskList -> Task
 		const onDeleteTask = (id) => {
-			dispatch(deleteTask(id));
+			deleteTask(dispatch, id);
 		}
 
 		//Used in AddTask -> NewTaskForm to prevent adding similar tasks

@@ -1,11 +1,23 @@
 scalar GraphQLDate
 
 type Task {
+	_id: ID!
 	id: Int!
 	title: String!
 	status: String!
 	created: GraphQLDate!
 }
+
+input TaskInputs {
+	title: String!	
+}
+
+input TaskUpdateInputs {
+	title: String
+	status: String
+}
+
+#### 
 
 type Query {
 	about: String!
@@ -14,4 +26,7 @@ type Query {
 
 type Mutation {
 	setAboutMessage(message: String!): String
+	taskAdd(task: TaskInputs!): Task!
+	taskUpdate(id: Int!, changes: TaskUpdateInputs!): Task!
+	taskDelete(id: Int!): Boolean!
 }

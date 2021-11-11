@@ -10,7 +10,6 @@ const AddTask = ({ onAdd, validateTask }) => {
 			<NewTaskForm
 				onAdd={text => {
 					onAdd(text);
-					console.log("submit: ", text);
 					setShowForm(false);
 				}}
 				onCancel={() => setShowForm(false)}
