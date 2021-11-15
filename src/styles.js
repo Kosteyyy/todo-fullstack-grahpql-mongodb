@@ -146,6 +146,7 @@ export const FooterContainer = styled.View`
 	width: 100%;
 	dispay: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: space-between;
 `
 
