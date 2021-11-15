@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import TaskFooter from './TaskFooter.jsx';
 import AddTask from './AddTask.jsx';
 import TaskList from './TaskList.jsx';
+import { Text, Button } from 'react-native';
 import { createTask, editTask, deleteTask, fetchTasks } from './actions'
 
 export default function TodoApp () {
@@ -94,7 +95,7 @@ export default function TodoApp () {
 					showDate={showDate}
 					onChangeShowDate={onChangeShowDate}
 				/>
-				<Help>Doubleclick to edit Task</Help>
+				<Help>Click to edit Task</Help>
 			</TasksContainer>	
 		)
 }

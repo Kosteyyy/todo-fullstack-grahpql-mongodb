@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { TaskContainer, TaskEditInput, TaskDate, DestroyTaskButton } from './styles.js';
+import { InputText, View, Text, CheckBox } from "react-native";
+import { TaskContainer, TaskEditInput, TaskDate, DestroyTaskButton, InlineContainer } from './styles.js';
 
 const ESCAPE_KEY = 27;
 const ENTER_KEY = 13;
+const textStyle = 'red';
 
 export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask }) => {
-	const [editing, setEditing] = useState(false);
-	const [editText, setEditText] = useState(task.title);
+	const [editing, setEditing] = useState(false);	//if editing - renders input
+	const [editText, setEditText] = useState(task.title); //Controlled input
 
 	function handleKeyDown(event) {
 		if (event.which === ESCAPE_KEY) {
@@ -49,29 +51,28 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask })
 					setEditing(false);
 					onEditTask(task.id, task.status, editText);
 				}}
-				onKeyDown={(e) => handleKeyDown(e)}
+				onKeyPress={(e) => handleKeyDown(e)}
 			/>
 		)
 	} 
 
+	//className={task.status==="completed" ? "completed" : ""}
 	return (
-		<TaskContainer 
-			className={task.status==="completed" ? "completed" : ""} 
-			onDoubleClick={() => setEditing(true)}
-		>
-			<div>
-				<input
+		<TaskContainer>
+			<InlineContainer>
+				<CheckBox
 					className="toggle"
-					type="checkbox"
-					checked={task.status==="completed"}
+					value={task.status==="completed"}
 					onChange={() => handleStatusChange()}
 				/>
-				{task.title}
-			</div>
-			<div>
-				{showDate ? <TaskDate>{new Date(task.created).toLocaleDateString()}</TaskDate> : null}
-				<DestroyTaskButton  onClick={() => handleDelete()}></DestroyTaskButton>
-			</div>
+				<Text onClick={() => setEditing(true)} style={{	fontSize: 16, marginLeft: 10, textDecoration : task.status==="completed" ? 'line-through' : 'none'}}>{task.title}</Text>
+			</InlineContainer>
+			<InlineContainer>
+				{showDate ? <TaskDate><Text>{new Date(task.created).toLocaleDateString()}</Text></TaskDate> : <Text> </Text>}
+				<DestroyTaskButton  onPress={() => handleDelete()} title="Delete" />
+			</InlineContainer>
+			
 		</TaskContainer>
+		
 	);
 }

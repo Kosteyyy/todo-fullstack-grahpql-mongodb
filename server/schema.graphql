@@ -9,7 +9,8 @@ type Task {
 }
 
 input TaskInputs {
-	title: String!	
+	title: String!
+	created: GraphQLDate!	
 }
 
 input TaskUpdateInputs {
