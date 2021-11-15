@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { InputText, View, Text, CheckBox } from "react-native";
+import { InputText, View, Text, CheckBox, StyleSheet } from "react-native";
 import { TaskContainer, TaskEditInput, TaskDate, DestroyTaskButton, InlineContainer } from './styles.js';
 
 const ESCAPE_KEY = 27;
@@ -58,8 +58,8 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask })
 
 	//className={task.status==="completed" ? "completed" : ""}
 	return (
-		<TaskContainer>
-			<InlineContainer>
+		<TaskContainer style={{ flexWrap: "wrap"}}>
+			<InlineContainer style={{ maxWidth: showDate ? "60%" : "80%"}}>
 				<CheckBox
 					className="toggle"
 					value={task.status==="completed"}
@@ -76,3 +76,9 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask })
 		
 	);
 }
+
+const styles = StyleSheet.create({
+  text: {
+    maxWidth: '80%',   // <-- Max width is 80%
+  },
+});
