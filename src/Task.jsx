@@ -5,8 +5,8 @@ const ESCAPE_KEY = 27;
 const ENTER_KEY = 13;
 
 export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask }) => {
-	const [editing, setEditing] = useState(false);
-	const [editText, setEditText] = useState(task.title);
+	const [editing, setEditing] = useState(false);	//if editing - renders input
+	const [editText, setEditText] = useState(task.title); //Controlled input
 
 	function handleKeyDown(event) {
 		if (event.which === ESCAPE_KEY) {

@@ -22,6 +22,18 @@ async function graphQLFetch(query, variables = {}) {
 	}
 }
 
+async function fetchTime() {
+	//fetches current time from worldtimeapi
+  let response = await fetch(
+    "https://worldtimeapi.org/api/timezone/Europe/London"
+  );
+  //console.log(response);
+  let result = await response.json();
+  let currentDate = result.datetime;
+  //console.log(currentDate);
+  return currentDate;
+}
+
 export function fetchTasksSucceeded(tasks) {
 	//action creator for dispatching all tasks into state
 	return {
@@ -57,7 +69,8 @@ export function createTaskSucceeded( task ) {
 
 export async function createTask(dispatch, title) {
 	//makes query to the server to create task
-	let task = {"title": title};
+	let currentDate = await fetchTime();
+	let task = {"title": title, "created": currentDate};
 	const query = `mutation taskAdd($task: TaskInputs!){
 	  taskAdd(task: $task) {
     id title created status

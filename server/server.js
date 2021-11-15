@@ -65,7 +65,8 @@ async function getNextId(name) {
 }
 
 async function taskAdd(_, { task }) {
-	task.created = new Date();
+	let currentDate = task.created;
+	task.created = new Date(currentDate);
 	task.id = await getNextId('tasks');
 	task.status = 'active';
 	const result = await db.collection('tasks').insertOne(task);
