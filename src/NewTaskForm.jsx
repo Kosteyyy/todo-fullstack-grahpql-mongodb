@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { NewTaskFormContainer, NewTaskButton, NewTaskInput, CancelNewTaskButton } from './styles.js';
+import { View } from "react-native";
+import { NewTaskFormContainer, NewTaskButton, NewTaskInput, CancelNewTaskButton, InlineContainer } from './styles.js';
 
 const ESCAPE_KEY = 27; //Keys to esc and confirm task creation 
 const ENTER_KEY = 13;
@@ -46,16 +47,16 @@ export const NewTaskForm = ({ onAdd, onCancel, validateTask }) => {
 				value={text}
 				placeholder={"Add task"}
 				onChange={e => setText(e.target.value)}
-				onKeyDown={(e) => handleKeyDown(e)}
+				onKeyPress={(e) => handleKeyDown(e)}
 			/>
-			<div>
-				<NewTaskButton opacity={opacity} disabled={disabled} onClick={onAddTask}>
-					Create
-				</NewTaskButton>
-				<CancelNewTaskButton onClick={onCancel}>
-					Cancel
-				</CancelNewTaskButton>
-			</div>
+			<InlineContainer>
+				<View style={{ marginLeft: 10 }}>
+					<NewTaskButton opacity={opacity} disabled={disabled} onPress={onAddTask} title="Create" style={"display: inline"}/>
+				</View>
+				<View style={{ marginLeft: 10 }}>
+					<CancelNewTaskButton color="peru" onPress={onCancel} title="Cancel" style={"display: inline"} />
+				</View>
+			</InlineContainer>
 		</NewTaskFormContainer>
 	)
 }

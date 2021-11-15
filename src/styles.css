@@ -8,3 +8,8 @@ html, body, #root {
 	height: 100%;
 	font-family: arial, "sans-serif", tahoma;
 }
+
+/* These styles disable body scrolling if you are using <ScrollView> */
+body { overflow: hidden; }
+/* These styles make the root element full-height */
+#root { display:flex; height:100%; }

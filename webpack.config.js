@@ -7,7 +7,11 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'public'),
     },
-
+    resolve: {
+        alias: {
+          'react-native$': 'react-native-web',
+        }
+    },
     module: {
         rules: [
             {

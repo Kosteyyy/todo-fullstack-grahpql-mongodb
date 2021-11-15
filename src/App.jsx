@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { AppRegistry } from "react-native";
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk'
@@ -14,15 +15,23 @@ const store = createStore(TasksReducer, composeWithDevTools(applyMiddleware(thun
 
 function App() {
 	return (
-		<AppContainer>
-			<TodoApp />
-		</AppContainer>
+		<Provider store={store}>
+			<AppContainer>
+				<TodoApp />
+			</AppContainer>
+		</Provider>
 	);
 }
 
-ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-	document.getElementById('root')
-);
+AppRegistry.registerComponent("App", () => App);
+
+AppRegistry.runApplication("App", {
+  rootTag: document.getElementById("root")
+});
+
+// ReactDOM.render(
+// 	<Provider store={store}>
+// 		<App />
+// 	</Provider>,
+// 	document.getElementById('root')
+// );

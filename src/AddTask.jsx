@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AddTaskButton } from './styles.js';
 import { NewTaskForm } from './NewTaskForm.jsx';
+import { Button, View } from 'react-native';
 
 const AddTask = ({ onAdd, validateTask }) => {
 	const [showForm, setShowForm] = useState(false);
@@ -19,7 +20,10 @@ const AddTask = ({ onAdd, validateTask }) => {
 	}
 
 	return (
-		<AddTaskButton onClick={() => setShowForm(true)}>+ AddTask</AddTaskButton>
+		<View style={{ marginBottom: 10 }}>
+					<Button onPress={() => setShowForm(true)}title="+ AddTask" />
+		</View>
+
 	);
 }
 

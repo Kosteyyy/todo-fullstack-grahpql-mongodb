@@ -1,5 +1,6 @@
 import React from 'react';
-import { FilterButton } from "./styles.js";
+import { View, StyleSheet } from 'react-native';
+import { FilterButton, InlineContainer } from "./styles.js";
 
 export default class Filter extends React.Component {
 	//Implement filter buttons and pass to parents filter Name via props.setFilter
@@ -14,20 +15,20 @@ export default class Filter extends React.Component {
 		const filters = ['All', 'Active', 'Completed'];
 		
 		return (
-			<>
-				{filters.map((filter, i) => <FilterButton 
-						onClick={() => {
-							this.setState({ activeFilter: filter });
-							this.props.setFilter(filter)
-						}} 
-						key={i} 
-						className={this.state.activeFilter===filter ? "active" : ""}
-					>
-						{filter}
-					</FilterButton>
+			<InlineContainer>
+				{filters.map((filter, i) => 
+					<View key={i} style={{ marginLeft: 10 }}>
+						<FilterButton 
+							onPress={() => {
+								this.setState({ activeFilter: filter });
+								this.props.setFilter(filter)
+							}} 
+							color={this.state.activeFilter===filter ? "peru" : "skyblue"}
+							title={filter}
+						/>
+					</View>
 				)}
-			</>
+			</InlineContainer>
 		)
 	}
 }
-
