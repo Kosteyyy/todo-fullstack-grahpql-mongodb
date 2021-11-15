@@ -24,7 +24,6 @@ export const TasksContainer = styled.View`
 	min-width: 350px;
 	width: 100%;
 	min-height: 40px;
-	margin-right: 20px;
 	border-radius: 3px;
 	padding: 8px 8px;
 `;
@@ -144,15 +143,13 @@ export const TaskDate = styled.View`
 
 export const FooterContainer = styled.View`
 	width: 100%;
-	dispay: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-between;
+	
 `
 
 export const FooterCounter = styled.Text`
 	color: #777;
-	margin-right: 20px;
+	margin: 5px 20px 10px 20px;
+	font-size: 1.25em;
 `
 
 export const FilterButton = styled.Button`
