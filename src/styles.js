@@ -143,7 +143,7 @@ export const TaskDate = styled.View`
 
 export const FooterContainer = styled.View`
 	width: 100%;
-	
+	padding-right: 10px;	
 `
 
 export const FooterCounter = styled.Text`

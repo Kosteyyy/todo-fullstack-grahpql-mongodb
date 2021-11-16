@@ -8,7 +8,7 @@ export default function TaskFooter({ taskCount, setFilter, showDate, onChangeSho
 			<FooterCounter>{taskCount} active tasks</FooterCounter>
 			<InlineContainer style={{justifyContent : "space-between"}}>
 				<Filter setFilter={setFilter} />
-				<ShowDateButton onPress={onChangeShowDate} title={showDate ? "Hide date" : "Show date"} />
+				<ShowDateButton style={{ marginRight: 100 }} onPress={onChangeShowDate} title={showDate ? "Hide date" : "Show date"} />
 			</InlineContainer>
 			
 		</FooterContainer>
