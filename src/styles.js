@@ -35,6 +35,11 @@ export const TasksTitle = styled.Text`
 	font-size: 2em;
 `;
 
+export const TaskText = styled.Text`
+	font-size: 1em;
+	margin-left: 10px;
+`;
+
 export const TaskContainer = styled.View`
 	display: flex;
 	flex-direction: row;

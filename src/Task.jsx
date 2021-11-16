@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { InputText, View, Text, CheckBox, StyleSheet } from "react-native";
-import { TaskContainer, TaskEditInput, TaskDate, DestroyTaskButton, InlineContainer } from './styles.js';
+import StyleSheet from "react-native-media-query";
+import { InputText, View, Text, CheckBox } from "react-native";
+import { TaskContainer, TaskEditInput, TaskDate, DestroyTaskButton, InlineContainer, TaskText } from './styles.js';
 
 const ESCAPE_KEY = 27;
 const ENTER_KEY = 13;
@@ -55,17 +56,31 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask })
 			/>
 		)
 	} 
+	const { ids, styles } = StyleSheet.create({
+	  text: {
+	    fontSize: 26,
+	    marginLeft: 10,
 
+	    "@media (max-width: 1600px) and (min-width: 800px)": {
+	      backgroundColor: "red"
+	    },
+	    "@media (max-width: 800px)": {
+	      backgroundColor: "blue"
+	    }
+	  }
+	});
+	//textStyle = Object.create({}, styles.text);
+  //console.log(textStyle);
 	//className={task.status==="completed" ? "completed" : ""}
 	return (
-		<TaskContainer style={{ flexWrap: "wrap"}}>
+		<TaskContainer style={{ flexWrap: "nowrap"}}>
 			<InlineContainer style={{ maxWidth: showDate ? "60%" : "80%"}}>
 				<CheckBox
 					className="toggle"
 					value={task.status==="completed"}
 					onChange={() => handleStatusChange()}
 				/>
-				<Text onClick={() => setEditing(true)} style={{	fontSize: 16, marginLeft: 10, textDecoration : task.status==="completed" ? 'line-through' : 'none'}}>{task.title}</Text>
+				<TaskText onClick={() => setEditing(true)} >{task.title}</TaskText>
 			</InlineContainer>
 			<InlineContainer>
 				{showDate ? <TaskDate><Text>{new Date(task.created).toLocaleDateString()}</Text></TaskDate> : <Text> </Text>}
@@ -77,8 +92,4 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask })
 	);
 }
 
-const styles = StyleSheet.create({
-  text: {
-    maxWidth: '80%',   // <-- Max width is 80%
-  },
-});
+
