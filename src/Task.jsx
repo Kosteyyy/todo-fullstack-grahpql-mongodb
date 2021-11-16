@@ -80,13 +80,12 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask })
 					value={task.status==="completed"}
 					onChange={() => handleStatusChange()}
 				/>
-				<TaskText onClick={() => setEditing(true)} >{task.title}</TaskText>
+				<TaskText style={{textDecoration : task.status==="completed" ? 'line-through' : 'none'}} onClick={() => setEditing(true)} >{task.title}</TaskText>
 			</InlineContainer>
 			<InlineContainer>
 				{showDate ? <TaskDate><Text>{new Date(task.created).toLocaleDateString()}</Text></TaskDate> : <Text> </Text>}
 				<DestroyTaskButton  onPress={() => handleDelete()} title="Delete" />
 			</InlineContainer>
-			
 		</TaskContainer>
 		
 	);
