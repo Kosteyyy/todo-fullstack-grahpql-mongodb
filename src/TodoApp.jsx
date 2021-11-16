@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import TaskFooter from './TaskFooter.jsx';
 import AddTask from './AddTask.jsx';
 import TaskList from './TaskList.jsx';
-import { Text, Button } from 'react-native';
+import { Text, Button, ScrollView, View } from 'react-native';
 import { createTask, editTask, deleteTask, fetchTasks } from './actions'
 
 export default function TodoApp () {
@@ -76,26 +76,30 @@ export default function TodoApp () {
 			)}, [tasks]);
 
 		return (
-			<TasksContainer>
-				<TasksTitle>ToDo</TasksTitle>
-				<AddTask 
-					onAdd={onCreateTask}
-					validateTask={validateTaskTitle}
-				/>
-				<TaskList 
-					tasks={shownTasks} 
-					onEditTask={onEditTask}
-					onDeleteTask={onDeleteTask}
-					showDate={showDate}
-					validateTask={validateTaskTitle}
-				/>
-				<TaskFooter
-					taskCount={activeTasksCount}
-					setFilter={setFilter}
-					showDate={showDate}
-					onChangeShowDate={onChangeShowDate}
-				/>
-				<Help>Click to edit Task</Help>
-			</TasksContainer>	
+			<View style={{maxHeight: "100%", width: 800, maxWidth: "100%"}}>
+			<ScrollView scrollEnabled={true} style={{maxHeight: "100%", margin: "0px auto"}} >	
+				<TasksContainer>
+					<TasksTitle>ToDo</TasksTitle>
+					<AddTask 
+						onAdd={onCreateTask}
+						validateTask={validateTaskTitle}
+					/>
+					<TaskList 
+						tasks={shownTasks} 
+						onEditTask={onEditTask}
+						onDeleteTask={onDeleteTask}
+						showDate={showDate}
+						validateTask={validateTaskTitle}
+					/>
+					<TaskFooter
+						taskCount={activeTasksCount}
+						setFilter={setFilter}
+						showDate={showDate}
+						onChangeShowDate={onChangeShowDate}
+					/>
+					<Help>Click to edit Task</Help>
+				</TasksContainer>	
+			</ScrollView>
+			</View>
 		)
 }
