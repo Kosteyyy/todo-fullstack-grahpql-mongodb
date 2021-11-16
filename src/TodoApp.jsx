@@ -76,7 +76,7 @@ export default function TodoApp () {
 			)}, [tasks]);
 
 		return (
-			<View style={{maxHeight: "100%", width: 800, maxWidth: "100%"}}>
+			<View style={{maxHeight: "100%", minWidth: 360, width: 800, maxWidth: "100%"}}>
 			<ScrollView scrollEnabled={true} style={{maxHeight: "100%", margin: "0px auto"}} >	
 				<TasksContainer>
 					<TasksTitle>ToDo</TasksTitle>
