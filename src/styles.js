@@ -21,7 +21,7 @@ export const Help = styled.Text`
 export const TasksContainer = styled.View`
 	background-color: #ebecf0;
 	max-width: 800px;
-	min-width: 375px;
+	min-width: 360px;
 	width: 100%;
 	min-height: 40px;
 	border-radius: 3px;
