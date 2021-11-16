@@ -56,41 +56,41 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask })
 			/>
 		)
 	} 
-	// const { ids, styles} = StyleSheet.create({
-	// 	  text: {
+	const { ids, styles} = StyleSheet.create({
+		  text: {
 
-	// 	    "@media (max-width: 1600px) and (min-width: 800px)": {
-	// 	    	maxWidth:"90%",
+		    "@media (max-width: 1600px) and (min-width: 800px)": {
+		    	maxWidth:"90%",
 
-	// 	    },
-	// 	    "@media (max-width: 800px) and (min-width: 451px)": {
-	// 	    	width: "90%",
-	// 	    	maxWidth: 500,
+		    },
+		    "@media (max-width: 800px) and (min-width: 451px)": {
+		    	width: "90%",
+		    	maxWidth: 500,
 
-	// 	    },
-	// 	    "@media (max-width: 450px)": {
-	// 	    	width: "90%",
-	// 	    	maxWidth: 250,
+		    },
+		    "@media (max-width: 450px)": {
+		    	width: "90%",
+		    	maxWidth: 250,
 
-	// 	    }
-	// 	  },
-	// 	  container: {
-	// 	  	"@media (max-width: 1600px) and (min-width: 800px)": {
-	// 	    	maxWidth:"90%",
-	// 	      backgroundColor: "blue"
-	// 	    },
-	// 	    "@media (max-width: 800px) and (min-width: 451px)": {
-	// 	    	width: "60%",
-	// 	    	maxWidth: "300%",
-	// 	      backgroundColor: "peru"
-	// 	    },
-	// 	    "@media (max-width: 450px)": {
-	// 	    	width: "50%",
-	// 	    	maxWidth: 300,
-	// 	      backgroundColor: "red"
-	// 	    }
-	// 	  }
-	// 	});
+		    }
+		  },
+		  container: {
+		  	"@media (max-width: 1600px) and (min-width: 800px)": {
+		    	maxWidth:"90%",
+		      backgroundColor: "blue"
+		    },
+		    "@media (max-width: 800px) and (min-width: 451px)": {
+		    	width: "60%",
+		    	maxWidth: "300%",
+		      backgroundColor: "peru"
+		    },
+		    "@media (max-width: 450px)": {
+		    	width: "50%",
+		    	maxWidth: 300,
+		      backgroundColor: "red"
+		    }
+		  }
+		}); 
 
 	return (
 		<TaskContainer style={{ flexWrap: "nowrap", width: "100%"}}>
