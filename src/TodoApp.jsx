@@ -97,7 +97,7 @@ export default function TodoApp () {
 						showDate={showDate}
 						onChangeShowDate={onChangeShowDate}
 					/>
-					<Help>Click to edit Task</Help>
+					<Help>Click Task to edit</Help>
 				</TasksContainer>	
 			</ScrollView>
 			</View>
