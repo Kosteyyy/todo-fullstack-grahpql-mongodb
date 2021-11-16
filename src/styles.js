@@ -38,6 +38,7 @@ export const TasksTitle = styled.Text`
 export const TaskText = styled.Text`
 	font-size: 1em;
 	margin-left: 10px;
+	width: 100%;
 `;
 
 export const TaskContainer = styled.View`

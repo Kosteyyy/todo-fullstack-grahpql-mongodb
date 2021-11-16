@@ -56,34 +56,57 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask })
 			/>
 		)
 	} 
-	const { ids, styles } = StyleSheet.create({
-	  text: {
-	    fontSize: 26,
-	    marginLeft: 10,
+	// const { ids, styles} = StyleSheet.create({
+	// 	  text: {
 
-	    "@media (max-width: 1600px) and (min-width: 800px)": {
-	      backgroundColor: "red"
-	    },
-	    "@media (max-width: 800px)": {
-	      backgroundColor: "blue"
-	    }
-	  }
-	});
-	//textStyle = Object.create({}, styles.text);
-  //console.log(textStyle);
-	//className={task.status==="completed" ? "completed" : ""}
+	// 	    "@media (max-width: 1600px) and (min-width: 800px)": {
+	// 	    	maxWidth:"90%",
+
+	// 	    },
+	// 	    "@media (max-width: 800px) and (min-width: 451px)": {
+	// 	    	width: "90%",
+	// 	    	maxWidth: 500,
+
+	// 	    },
+	// 	    "@media (max-width: 450px)": {
+	// 	    	width: "90%",
+	// 	    	maxWidth: 250,
+
+	// 	    }
+	// 	  },
+	// 	  container: {
+	// 	  	"@media (max-width: 1600px) and (min-width: 800px)": {
+	// 	    	maxWidth:"90%",
+	// 	      backgroundColor: "blue"
+	// 	    },
+	// 	    "@media (max-width: 800px) and (min-width: 451px)": {
+	// 	    	width: "60%",
+	// 	    	maxWidth: "300%",
+	// 	      backgroundColor: "peru"
+	// 	    },
+	// 	    "@media (max-width: 450px)": {
+	// 	    	width: "50%",
+	// 	    	maxWidth: 300,
+	// 	      backgroundColor: "red"
+	// 	    }
+	// 	  }
+	// 	});
+
 	return (
-		<TaskContainer style={{ flexWrap: "nowrap"}}>
-			<InlineContainer style={{ maxWidth: showDate ? "60%" : "80%"}}>
+		<TaskContainer style={{ flexWrap: "nowrap", width: "100%"}}>
+			<InlineContainer style={{width: showDate ? "50%" : "80%"}}>
 				<CheckBox
 					className="toggle"
 					value={task.status==="completed"}
 					onChange={() => handleStatusChange()}
 				/>
-				<TaskText style={{textDecoration : task.status==="completed" ? 'line-through' : 'none'}} onClick={() => setEditing(true)} >{task.title}</TaskText>
+				<View style={{width: showDate ? "100%" : "100%", textDecoration : task.status==="completed" ? 'line-through' : 'none'}}>
+					<TaskText style={styles.text} dataSet={{ media: ids.text }} onClick={() => setEditing(true)} >{task.title}</TaskText>
+				</View>
+
 			</InlineContainer>
-			<InlineContainer>
-				{showDate ? <TaskDate><Text>{new Date(task.created).toLocaleDateString()}</Text></TaskDate> : <Text> </Text>}
+			<InlineContainer style={{width: showDate ? 155 : 65, justifyContent: 'flex-end'}}>
+				{showDate ? <TaskDate><Text >{new Date(task.created).toLocaleDateString()}</Text></TaskDate> : <Text> </Text>}
 				<DestroyTaskButton  onPress={() => handleDelete()} title="Delete" />
 			</InlineContainer>
 		</TaskContainer>
@@ -91,4 +114,5 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask })
 	);
 }
 
+	
 
