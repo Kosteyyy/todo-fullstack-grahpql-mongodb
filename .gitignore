@@ -1,2 +1,6 @@
 /node_modules/
 init.mongo.js
+/server/db_access.js
+/scripts
+/public/app.bundle.js
+/public/vendor.bundle.js

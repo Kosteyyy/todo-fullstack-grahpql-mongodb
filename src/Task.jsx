@@ -12,7 +12,7 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask })
 	const [editText, setEditText] = useState(task.title); //Controlled input
 
 	function handleKeyDown(event) {
-		if (event.which === ESCAPE_KEY) {
+		if (event.key === ESCAPE_KEY) {
 			setEditText(task.title);
 			setEditing(false);
 		} else if (event.which === ENTER_KEY) {
@@ -74,22 +74,22 @@ export const Task = ({ task, onEditTask, onDeleteTask, showDate, validateTask })
 
 		    }
 		  },
-		  container: {
-		  	"@media (max-width: 1600px) and (min-width: 800px)": {
-		    	maxWidth:"90%",
-		      backgroundColor: "blue"
-		    },
-		    "@media (max-width: 800px) and (min-width: 451px)": {
-		    	width: "60%",
-		    	maxWidth: "300%",
-		      backgroundColor: "peru"
-		    },
-		    "@media (max-width: 450px)": {
-		    	width: "50%",
-		    	maxWidth: 300,
-		      backgroundColor: "red"
-		    }
-		  }
+		  // container: {
+		  // 	"@media (max-width: 1600px) and (min-width: 800px)": {
+		  //   	maxWidth:"90%",
+		  //     backgroundColor: "blue"
+		  //   },
+		  //   "@media (max-width: 800px) and (min-width: 451px)": {
+		  //   	width: "60%",
+		  //   	maxWidth: "300%",
+		  //     backgroundColor: "peru"
+		  //   },
+		  //   "@media (max-width: 450px)": {
+		  //   	width: "50%",
+		  //   	maxWidth: 300,
+		  //     backgroundColor: "red"
+		  //   }
+		  // }
 		}); 
 
 	return (
