@@ -4,3 +4,4 @@ init.mongo.js
 /scripts
 /public/app.bundle.js
 /public/vendor.bundle.js
+.env
