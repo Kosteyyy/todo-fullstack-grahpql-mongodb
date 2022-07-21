@@ -108,7 +108,7 @@ async function connectToDb() {
     useUnifiedTopology: true,
   });
   await client.connect();
-  console.log("Connected to MongoDB at", url);
+  console.log("Connected to MongoDB");
   db = client.db();
 }
 
