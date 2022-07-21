@@ -132,3 +132,5 @@ server.applyMiddleware({ app, path: "/graphql" });
     console.log("Error: ", err);
   }
 })();
+
+module.exports = app;
